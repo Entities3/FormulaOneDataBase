@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formula1.Models", "Formula1.Models\Formula1.Models.csproj", "{F7433AC7-1E9F-4120-A226-5A22A74B51E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formula1.Data", "Formula1.Data\Formula1.Data.csproj", "{FA2042F0-1BC2-4C2F-8AAB-B510FB7B682F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formula1.ConsoleClient", "Formula1.ConsoleClient\Formula1.ConsoleClient.csproj", "{285BD85A-076D-4582-820A-50FFC1381F30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7433AC7-1E9F-4120-A226-5A22A74B51E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7433AC7-1E9F-4120-A226-5A22A74B51E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7433AC7-1E9F-4120-A226-5A22A74B51E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7433AC7-1E9F-4120-A226-5A22A74B51E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2042F0-1BC2-4C2F-8AAB-B510FB7B682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2042F0-1BC2-4C2F-8AAB-B510FB7B682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2042F0-1BC2-4C2F-8AAB-B510FB7B682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2042F0-1BC2-4C2F-8AAB-B510FB7B682F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285BD85A-076D-4582-820A-50FFC1381F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285BD85A-076D-4582-820A-50FFC1381F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285BD85A-076D-4582-820A-50FFC1381F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285BD85A-076D-4582-820A-50FFC1381F30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
