@@ -17,7 +17,7 @@
 
         public virtual IDbSet<Circuit> Circuits { get; set; }
 
-        public virtual IDbSet<Countriy> Countries { get; set; }
+        public virtual IDbSet<Country> Countries { get; set; }
 
         public virtual IDbSet<Constructor> Constructors { get; set; }
 

@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constructor.cs" />
-    <Compile Include="Countriy.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Circuit.cs" />
     <Compile Include="Nationality.cs" />

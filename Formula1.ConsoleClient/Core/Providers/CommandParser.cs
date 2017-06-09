@@ -34,9 +34,8 @@
             {
                 throw new ArgumentException("Invalid command!");
             }
-            commandNameParts.GetRange(0, 3);
-            
-            string commandName = string.Join("", commandNameParts);
+
+            string commandName = string.Join("", commandNameParts.GetRange(0, 3));
             TypeInfo commandTypeInfo = this.FindCommand(commandName);
             ICommand command = Activator.CreateInstance(commandTypeInfo) as ICommand;
 
@@ -50,6 +49,7 @@
             {
                 throw new ArgumentException("Invalid command!");
             }
+
             commandParts.RemoveRange(0, 3);
 
             if (commandParts.Count() == 0)

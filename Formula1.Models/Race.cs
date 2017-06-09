@@ -19,6 +19,9 @@
         public virtual Driver Driver { get; set; }
 
         [Required]
+        public virtual Constructor Constructor { get; set; }
+
+        [Required]
         [Range(0, 25, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Score { get; set; }
     }

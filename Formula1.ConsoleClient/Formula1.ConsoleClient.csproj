@@ -89,8 +89,12 @@
     <Compile Include="Core\Providers\FileLogger.cs" />
     <Compile Include="Core\Providers\JsonReader.cs" />
     <Compile Include="Core\Providers\PdfWriter.cs" />
-    <Compile Include="JsonModels\ConstructorsJson.cs" />
+    <Compile Include="JsonModels\CircuitJson.cs" />
+    <Compile Include="JsonModels\ConstructorJson.cs" />
     <Compile Include="JsonModels\DriverJson.cs" />
+    <Compile Include="JsonModels\ParticipantJson.cs" />
+    <Compile Include="JsonModels\RaceJson.cs" />
+    <Compile Include="JsonModels\SeasonJson.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

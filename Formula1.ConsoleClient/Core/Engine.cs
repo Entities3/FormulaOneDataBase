@@ -15,7 +15,7 @@
         private const string TerminationCommand = "end";
         private const string NullProvidersExceptionMessage = "cannot be null.";
 
-        private static Formula1Context db;
+        private Formula1Context db;
         private ICommandParser parser;
         private IReader reader;
         private IWriter writer;
@@ -27,16 +27,16 @@
             this.Writer = writer ?? ConsoleWriter.Instance;
             this.Logger = logger ?? FileLogger.Instance;
             this.Parser = parser ?? CommandParser.Instance;
-            DataBase = new Formula1Context();
+            this.DataBase = new Formula1Context();
         }
 
-        public static Formula1Context DataBase
+        public Formula1Context DataBase
         {
             get
             {
                 return db;
             }
-            private set
+            set
             {
                 // here???
                 Database.SetInitializer(new MigrateDatabaseToLatestVersion<Formula1Context, Configuration>());
@@ -45,7 +45,8 @@
             }
         }
 
-        public IReader Reader {
+        public IReader Reader
+        {
             get
             {
                 return this.reader;

@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formula1Context.cs" />
-    <Compile Include="Migrations\201706072026391_UniqueColumnCombinations.cs" />
-    <Compile Include="Migrations\201706072026391_UniqueColumnCombinations.Designer.cs">
-      <DependentUpon>201706072026391_UniqueColumnCombinations.cs</DependentUpon>
+    <Compile Include="Migrations\201706092046312_UniqueColumnsCombination.cs" />
+    <Compile Include="Migrations\201706092046312_UniqueColumnsCombination.Designer.cs">
+      <DependentUpon>201706092046312_UniqueColumnsCombination.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +68,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706072026391_UniqueColumnCombinations.resx">
-      <DependentUpon>201706072026391_UniqueColumnCombinations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706092046312_UniqueColumnsCombination.resx">
+      <DependentUpon>201706092046312_UniqueColumnsCombination.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

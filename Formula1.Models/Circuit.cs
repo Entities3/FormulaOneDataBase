@@ -14,7 +14,7 @@
         public string Name { get; set; }
 
         [Required]
-        public Countriy Country { get; set; }
+        public Country Country { get; set; }
 
         public string Locality { get; set; }
 

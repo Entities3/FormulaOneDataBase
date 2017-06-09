@@ -5,7 +5,7 @@
 
     public class ReportToPdf : ICommand
     {
-        private Formula1Context db = Engine.DataBase;
+        private Formula1Context db = new Formula1Context();
 
         // example input command:"report to pdf get all drivers"
         public void Execute(IList<string> parameters)
