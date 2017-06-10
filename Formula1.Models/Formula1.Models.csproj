@@ -53,6 +53,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Circuit.cs" />
+    <Compile Include="GrandPrix.cs" />
     <Compile Include="Nationality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />

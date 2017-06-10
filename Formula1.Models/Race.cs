@@ -10,7 +10,7 @@
         public string Position { get; set; }
 
         [Required]
-        public virtual Circuit Circuit { get; set; }
+        public virtual GrandPrix GrandPrix { get; set; }
 
         [Required]
         public virtual Season Season { get; set; }

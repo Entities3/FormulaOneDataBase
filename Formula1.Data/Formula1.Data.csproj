@@ -50,10 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formula1Context.cs" />
-    <Compile Include="Migrations\201706092046312_UniqueColumnsCombination.cs" />
-    <Compile Include="Migrations\201706092046312_UniqueColumnsCombination.Designer.cs">
-      <DependentUpon>201706092046312_UniqueColumnsCombination.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,11 +62,6 @@
       <Project>{F7433AC7-1E9F-4120-A226-5A22A74B51E3}</Project>
       <Name>Formula1.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706092046312_UniqueColumnsCombination.resx">
-      <DependentUpon>201706092046312_UniqueColumnsCombination.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

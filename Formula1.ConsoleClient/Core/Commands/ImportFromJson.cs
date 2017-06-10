@@ -102,6 +102,7 @@
             // in other method - "json deserializer"
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             IList<RaceJson> racesJson = serializer.Deserialize<List<RaceJson>>(json);
+            IList<string> savedGrandPrixes = db.GrandPrixes.Select(g => g.Name).ToList();
 
             int rowToAffectCounter = 0;
             int rowAffectedCounter = 0;
@@ -116,56 +117,74 @@
                     FileLogger.Instance.Info($"Races: 0 rows affected!");
                     throw new ArgumentException($"Season {raceJson.Season} doesn't exist in data base! Please create a new season and import again!");
                 }
-
-                Constructor constructor = GetConstructor(raceJson.Constructor);
-                if (constructor == null)
+                //to fix circuit in racejson class
+                GrandPrix grandPrix = GetGrandPrix(raceJson.Circuit);
+                if (grandPrix == null)
                 {
-                    ConsoleWriter.Instance.WriteLine($"Races: 0 rows affected!");
-                    FileLogger.Instance.Info($"Races: 0 rows affected!");
-                    throw new ArgumentException($"Constructor {raceJson.Constructor} doesn't exist in data base! Please create a new constructor and import again!");
+                    grandPrix = ImportGrandPrix(raceJson.Circuit);
+                    savedGrandPrixes.Add(raceJson.Circuit);
                 }
 
-                Driver driver = GetDriver(raceJson.Driver);
-                if (driver == null)
+                foreach (DriverResultJson result in raceJson.Results)
                 {
-                    ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
-                    FileLogger.Instance.Info($"Race: 0 rows affected!");
-                    throw new ArgumentException($"Driver {raceJson.Driver} doesn't exist in data base! Please create a new driver and import again!");
-                }
+                    Constructor constructor = GetConstructor(result.Constructor);
+                    if (constructor == null)
+                    {
+                        ConsoleWriter.Instance.WriteLine($"Races: 0 rows affected!");
+                        FileLogger.Instance.Info($"Races: 0 rows affected!");
+                        throw new ArgumentException($"Constructor {result.Constructor} doesn't exist in data base! Please create a new constructor and import again!");
+                    }
 
-                Circuit circuit = GetCircuit(raceJson.Circuit);
-                if (circuit == null)
-                {
-                    ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
-                    FileLogger.Instance.Info($"Race: 0 rows affected!");
-                    throw new ArgumentException($"Circuit {raceJson.Circuit} doesn't exist in data base! Please create a new circuit and import again!");
-                }
+                    Driver driver = GetDriver(result.Driver);
+                    if (driver == null)
+                    {
+                        ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
+                        FileLogger.Instance.Info($"Race: 0 rows affected!");
+                        throw new ArgumentException($"Driver {result.Driver} doesn't exist in data base! Please create a new driver and import again!");
+                    }
 
-                string position = raceJson.Position;
-                if (position == null)
-                {
-                    ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
-                    FileLogger.Instance.Info($"Race: 0 rows affected!");
-                    throw new ArgumentException($"Race position could not be null!");
-                }
+                    string position = result.Position;
+                    if (position == null)
+                    {
+                        ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
+                        FileLogger.Instance.Info($"Race: 0 rows affected!");
+                        throw new ArgumentException($"Race position could not be null!");
+                    }
 
-                int score;
-                bool isNull = int.TryParse(raceJson.Points, out score);
-                if (isNull)
-                {
-                    ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
-                    FileLogger.Instance.Info($"Race: 0 rows affected!");
-                    throw new ArgumentException($"Score could not be null!");
-                }
+                    int score;
+                    bool isNull = int.TryParse(result.Points, out score);
+                    if (!isNull)
+                    {
+                        ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
+                        FileLogger.Instance.Info($"Race: 0 rows affected!");
+                        throw new ArgumentException($"Score could not be null!");
+                    }
 
-                rowAffectedCounter++;
-                Race race = new Race { Season = season, Circuit = circuit, Driver = driver, Constructor = constructor, Position = position, Score = score };
-                db.Races.Add(race);
+                    rowAffectedCounter++;
+                    Race race = new Race { Season = season, GrandPrix=grandPrix, Driver = driver, Constructor = constructor, Position = position, Score = score };
+                    db.Races.Add(race);
+                }
             }
 
             db.SaveChanges();
             ConsoleWriter.Instance.WriteLine($"Races: {rowAffectedCounter}/{rowToAffectCounter} rows affected!");
             FileLogger.Instance.Info($"Races: {rowAffectedCounter}/{rowToAffectCounter} rows affected!");
+        }
+
+        private GrandPrix ImportGrandPrix(string grandPrixName)
+        {
+            GrandPrix grandPrix = new GrandPrix() { Name = grandPrixName };
+            db.GrandPrixes.Add(grandPrix);
+            db.SaveChanges();
+            ConsoleWriter.Instance.WriteLine($"Created new Grand Prix {grandPrixName}!");
+            FileLogger.Instance.Info($"Created new Grand Prix {grandPrixName}!");
+            return grandPrix;
+        }
+
+        private GrandPrix GetGrandPrix(string grandPrixName)
+        {
+            GrandPrix grandPrix = db.GrandPrixes.FirstOrDefault(g => g.Name == grandPrixName);
+            return grandPrix;
         }
 
         private Circuit GetCircuit(string circuitName)
@@ -206,19 +225,6 @@
             db.SaveChanges();
             ConsoleWriter.Instance.WriteLine($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows affected!");
             FileLogger.Instance.Info($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows affected!");
-        }
-
-        private Country ImportCountry(string countryName)
-        {
-            Country country = new Country() { Name = countryName };
-            db.Countries.Add(country);
-            db.SaveChanges();
-            return country;
-        }
-
-        private Country GetCountry(string country)
-        {
-            throw new NotImplementedException();
         }
 
         private void ImportConstructors(string json)
@@ -339,6 +345,22 @@
                 db.SaveChanges();
                 return nationality;
             }
+        }
+
+        private Country ImportCountry(string countryName)
+        {
+            Country country = new Country() { Name = countryName };
+            db.Countries.Add(country);
+            db.SaveChanges();
+            ConsoleWriter.Instance.WriteLine($"Created new country {countryName}!");
+            FileLogger.Instance.Info($"Created new country {countryName}!");
+            return country;
+        }
+
+        private Country GetCountry(string countryName)
+        {
+            Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
+            return country;
         }
     }
 }

@@ -24,5 +24,3 @@ C:\Users\Acer\Desktop\Formula1\Formula1.Data\bin\Debug\EntityFramework.SqlServer
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.csprojResolveAssemblyReference.cache
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.dll
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.pdb
-C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.Migrations.UniqueColumnsCombination.resources
-C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.csproj.GenerateResource.Cache

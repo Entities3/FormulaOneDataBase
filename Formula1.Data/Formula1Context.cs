@@ -27,6 +27,8 @@
 
         public virtual IDbSet<SeasonParticipants> SeasonsParticipants { get; set; }
 
+        public virtual IDbSet<GrandPrix> GrandPrixes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //          modelBuilder.Entity<Driver>()
