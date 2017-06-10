@@ -1,0 +1,440 @@
+[
+	{
+		"CircuitName": "Adelaide Street Circuit",
+		"Locality": "Adelaide",
+		"Country": "Australia",
+		"Information": "http://en.wikipedia.org/wiki/Adelaide_Street_Circuit#"
+	},
+	{
+		"CircuitName": "Ain Diab",
+		"Locality": "Casablanca",
+		"Country": "Morocco",
+		"Information": "http://en.wikipedia.org/wiki/Ain-Diab_Circuit#"
+	},
+	{
+		"CircuitName": "Aintree",
+		"Locality": "Liverpool",
+		"Country": "UK",
+		"Information": "http://en.wikipedia.org/wiki/Aintree_Motor_Racing_Circuit#"
+	},
+	{
+		"CircuitName": "Albert Park Grand Prix Circuit",
+		"Locality": "Melbourne",
+		"Country": "Australia",
+		"Information": "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit of the Americas",
+		"Locality": "Austin",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_of_the_Americas#"
+	},
+	{
+		"CircuitName": "Scandinavian Raceway",
+		"Locality": "Anderstorp",
+		"Country": "Sweden",
+		"Information": "http://en.wikipedia.org/wiki/Scandinavian_Raceway#"
+	},
+	{
+		"CircuitName": "AVUS",
+		"Locality": "Berlin",
+		"Country": "Germany",
+		"Information": "http://en.wikipedia.org/wiki/AVUS#"
+	},
+	{
+		"CircuitName": "Bahrain International Circuit",
+		"Locality": "Sakhir",
+		"Country": "Bahrain",
+		"Information": "http://en.wikipedia.org/wiki/Bahrain_International_Circuit#"
+	},
+	{
+		"CircuitName": "Baku City Circuit",
+		"Locality": "Baku",
+		"Country": "Azerbaijan",
+		"Information": "http://en.wikipedia.org/wiki/Baku_City_Circuit#"
+	},
+	{
+		"CircuitName": "Circuito da Boavista",
+		"Locality": "Oporto",
+		"Country": "Portugal",
+		"Information": "http://en.wikipedia.org/wiki/Circuito_da_Boavista#"
+	},
+	{
+		"CircuitName": "Brands Hatch",
+		"Locality": "Kent",
+		"Country": "UK",
+		"Information": "http://en.wikipedia.org/wiki/Brands_Hatch#"
+	},
+	{
+		"CircuitName": "Circuit Bremgarten",
+		"Locality": "Bern",
+		"Country": "Switzerland",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_Bremgarten#"
+	},
+	{
+		"CircuitName": "Buddh International Circuit",
+		"Locality": "Uttar Pradesh",
+		"Country": "India",
+		"Information": "http://en.wikipedia.org/wiki/Buddh_International_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit de Barcelona-Catalunya",
+		"Locality": "Montmeló",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_de_Barcelona-Catalunya#"
+	},
+	{
+		"CircuitName": "Charade Circuit",
+		"Locality": "Clermont-Ferrand",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Charade_Circuit#"
+	},
+	{
+		"CircuitName": "Fair Park",
+		"Locality": "Dallas",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Fair_Park#"
+	},
+	{
+		"CircuitName": "Detroit Street Circuit",
+		"Locality": "Detroit",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Detroit_street_circuit#"
+	},
+	{
+		"CircuitName": "Dijon-Prenois",
+		"Locality": "Dijon",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Dijon-Prenois#"
+	},
+	{
+		"CircuitName": "Donington Park",
+		"Locality": "Castle Donington",
+		"Country": "UK",
+		"Information": "http://en.wikipedia.org/wiki/Donington_Park#"
+	},
+	{
+		"CircuitName": "Rouen-Les-Essarts",
+		"Locality": "Rouen",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Rouen-Les-Essarts#"
+	},
+	{
+		"CircuitName": "Autódromo do Estoril",
+		"Locality": "Estoril",
+		"Country": "Portugal",
+		"Information": "http://en.wikipedia.org/wiki/Aut%C3%B3dromo_do_Estoril#"
+	},
+	{
+		"CircuitName": "Fuji Speedway",
+		"Locality": "Oyama",
+		"Country": "Japan",
+		"Information": "http://en.wikipedia.org/wiki/Fuji_Speedway#"
+	},
+	{
+		"CircuitName": "Autódromo Juan y Oscar Gálvez",
+		"Locality": "Buenos Aires",
+		"Country": "Argentina",
+		"Information": "http://en.wikipedia.org/wiki/Aut%C3%B3dromo_Oscar_Alfredo_G%C3%A1lvez#"
+	},
+	{
+		"CircuitName": "Prince George Circuit",
+		"Locality": "Eastern Cape Province",
+		"Country": "South Africa",
+		"Information": "http://en.wikipedia.org/wiki/Prince_George_Circuit#"
+	},
+	{
+		"CircuitName": "Hockenheimring",
+		"Locality": "Hockenheim",
+		"Country": "Germany",
+		"Information": "http://en.wikipedia.org/wiki/Hockenheimring#"
+	},
+	{
+		"CircuitName": "Hungaroring",
+		"Locality": "Budapest",
+		"Country": "Hungary",
+		"Information": "http://en.wikipedia.org/wiki/Hungaroring#"
+	},
+	{
+		"CircuitName": "Autodromo Enzo e Dino Ferrari",
+		"Locality": "Imola",
+		"Country": "Italy",
+		"Information": "http://en.wikipedia.org/wiki/Autodromo_Enzo_e_Dino_Ferrari#"
+	},
+	{
+		"CircuitName": "Indianapolis Motor Speedway",
+		"Locality": "Indianapolis",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Indianapolis_Motor_Speedway#"
+	},
+	{
+		"CircuitName": "Autódromo José Carlos Pace",
+		"Locality": "São Paulo",
+		"Country": "Brazil",
+		"Information": "http://en.wikipedia.org/wiki/Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace#"
+	},
+	{
+		"CircuitName": "Istanbul Park",
+		"Locality": "Istanbul",
+		"Country": "Turkey",
+		"Information": "http://en.wikipedia.org/wiki/Istanbul_Park#"
+	},
+	{
+		"CircuitName": "Autódromo Internacional Nelson Piquet",
+		"Locality": "Rio de Janeiro",
+		"Country": "Brazil",
+		"Information": "http://en.wikipedia.org/wiki/Aut%C3%B3dromo_Internacional_Nelson_Piquet#"
+	},
+	{
+		"CircuitName": "Jarama",
+		"Locality": "Madrid",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Circuito_Permanente_Del_Jarama#"
+	},
+	{
+		"CircuitName": "Circuito de Jerez",
+		"Locality": "Jerez de la Frontera",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Circuito_Permanente_de_Jerez#"
+	},
+	{
+		"CircuitName": "Kyalami",
+		"Locality": "Midrand",
+		"Country": "South Africa",
+		"Information": "http://en.wikipedia.org/wiki/Kyalami#"
+	},
+	{
+		"CircuitName": "Las Vegas Street Circuit",
+		"Locality": "Nevada",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Las_Vegas"
+	},
+	{
+		"CircuitName": "Le Mans",
+		"Locality": "Le Mans",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_de_la_Sarthe#Bugatti_Circuit"
+	},
+	{
+		"CircuitName": "Long Beach",
+		"Locality": "California",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Long_Beach"
+	},
+	{
+		"CircuitName": "Circuit de Nevers Magny-Cours",
+		"Locality": "Magny Cours",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_de_Nevers_Magny-Cours#"
+	},
+	{
+		"CircuitName": "Marina Bay Street Circuit",
+		"Locality": "Marina Bay",
+		"Country": "Singapore",
+		"Information": "http://en.wikipedia.org/wiki/Marina_Bay_Street_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit de Monaco",
+		"Locality": "Monte-Carlo",
+		"Country": "Monaco",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_de_Monaco#"
+	},
+	{
+		"CircuitName": "Monsanto Park Circuit",
+		"Locality": "Lisbon",
+		"Country": "Portugal",
+		"Information": "http://en.wikipedia.org/wiki/Monsanto_Park_Circuit#"
+	},
+	{
+		"CircuitName": "Montjuïc",
+		"Locality": "Barcelona",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Montju%C3%AFc_circuit#"
+	},
+	{
+		"CircuitName": "Autodromo Nazionale di Monza",
+		"Locality": "Monza",
+		"Country": "Italy",
+		"Information": "http://en.wikipedia.org/wiki/Autodromo_Nazionale_Monza#"
+	},
+	{
+		"CircuitName": "Mosport International Raceway",
+		"Locality": "Ontario",
+		"Country": "Canada",
+		"Information": "http://en.wikipedia.org/wiki/Mosport#"
+	},
+	{
+		"CircuitName": "Nivelles-Baulers",
+		"Locality": "Brussels",
+		"Country": "Belgium",
+		"Information": "http://en.wikipedia.org/wiki/Nivelles-Baulers#"
+	},
+	{
+		"CircuitName": "Nürburgring",
+		"Locality": "Nürburg",
+		"Country": "Germany",
+		"Information": "http://en.wikipedia.org/wiki/N%C3%BCrburgring#"
+	},
+	{
+		"CircuitName": "Okayama International Circuit",
+		"Locality": "Okayama",
+		"Country": "Japan",
+		"Information": "http://en.wikipedia.org/wiki/TI_Circuit#"
+	},
+	{
+		"CircuitName": "A1-Ring",
+		"Locality": "Spielburg",
+		"Country": "Austria",
+		"Information": "http://en.wikipedia.org/wiki/A1-Ring#"
+	},
+	{
+		"CircuitName": "Circuit de Pedralbes",
+		"Locality": "Barcelona",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Pedralbes_Circuit#"
+	},
+	{
+		"CircuitName": "Pescara Circuit",
+		"Locality": "Pescara",
+		"Country": "Italy",
+		"Information": "http://en.wikipedia.org/wiki/Pescara_Circuit#"
+	},
+	{
+		"CircuitName": "Phoenix street circuit",
+		"Locality": "Phoenix",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Phoenix_street_circuit#"
+	},
+	{
+		"CircuitName": "Port Imperial Street Circuit",
+		"Locality": "New Jersey",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Port_Imperial_Street_Circuit#"
+	},
+	{
+		"CircuitName": "Red Bull Ring",
+		"Locality": "Spielburg",
+		"Country": "Austria",
+		"Information": "http://en.wikipedia.org/wiki/Red_Bull_Ring#"
+	},
+	{
+		"CircuitName": "Reims-Gueux",
+		"Locality": "Reims",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Reims-Gueux#"
+	},
+	{
+		"CircuitName": "Circuit Paul Ricard",
+		"Locality": "Le Castellet",
+		"Country": "France",
+		"Information": "http://en.wikipedia.org/wiki/Paul_Ricard_Circuit#"
+	},
+	{
+		"CircuitName": "Riverside International Raceway",
+		"Locality": "California",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Riverside_International_Raceway#"
+	},
+	{
+		"CircuitName": "Autódromo Hermanos Rodríguez",
+		"Locality": "Mexico City",
+		"Country": "Mexico",
+		"Information": "http://en.wikipedia.org/wiki/Aut%C3%B3dromo_Hermanos_Rodr%C3%ADguez#"
+	},
+	{
+		"CircuitName": "Sebring International Raceway",
+		"Locality": "Florida",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Sebring_Raceway#"
+	},
+	{
+		"CircuitName": "Sepang International Circuit",
+		"Locality": "Kuala Lumpur",
+		"Country": "Malaysia",
+		"Information": "http://en.wikipedia.org/wiki/Sepang_International_Circuit#"
+	},
+	{
+		"CircuitName": "Shanghai International Circuit",
+		"Locality": "Shanghai",
+		"Country": "China",
+		"Information": "http://en.wikipedia.org/wiki/Shanghai_International_Circuit#"
+	},
+	{
+		"CircuitName": "Silverstone Circuit",
+		"Locality": "Silverstone",
+		"Country": "UK",
+		"Information": "http://en.wikipedia.org/wiki/Silverstone_Circuit#"
+	},
+	{
+		"CircuitName": "Sochi Autodrom",
+		"Locality": "Sochi",
+		"Country": "Russia",
+		"Information": "http://en.wikipedia.org/wiki/Sochi_Autodrom#"
+	},
+	{
+		"CircuitName": "Circuit de Spa-Francorchamps",
+		"Locality": "Spa",
+		"Country": "Belgium",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps#"
+	},
+	{
+		"CircuitName": "Suzuka Circuit",
+		"Locality": "Suzuka",
+		"Country": "Japan",
+		"Information": "http://en.wikipedia.org/wiki/Suzuka_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit Mont-Tremblant",
+		"Locality": "Quebec",
+		"Country": "Canada",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_Mont-Tremblant#"
+	},
+	{
+		"CircuitName": "Valencia Street Circuit",
+		"Locality": "Valencia",
+		"Country": "Spain",
+		"Information": "http://en.wikipedia.org/wiki/Valencia_Street_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit Gilles Villeneuve",
+		"Locality": "Montreal",
+		"Country": "Canada",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_Gilles_Villeneuve#"
+	},
+	{
+		"CircuitName": "Watkins Glen",
+		"Locality": "New York State",
+		"Country": "USA",
+		"Information": "http://en.wikipedia.org/wiki/Watkins_Glen_International#"
+	},
+	{
+		"CircuitName": "Yas Marina Circuit",
+		"Locality": "Abu Dhabi",
+		"Country": "UAE",
+		"Information": "http://en.wikipedia.org/wiki/Yas_Marina_Circuit#"
+	},
+	{
+		"CircuitName": "Korean International Circuit",
+		"Locality": "Yeongam County",
+		"Country": "Korea",
+		"Information": "http://en.wikipedia.org/wiki/Korean_International_Circuit#"
+	},
+	{
+		"CircuitName": "Circuit Park Zandvoort",
+		"Locality": "Zandvoort",
+		"Country": "Netherlands",
+		"Information": "http://en.wikipedia.org/wiki/Circuit_Zandvoort#"
+	},
+	{
+		"CircuitName": "Zeltweg",
+		"Locality": "Styria",
+		"Country": "Austria",
+		"Information": "http://en.wikipedia.org/wiki/Zeltweg_Airfield#"
+	},
+	{
+		"CircuitName": "Zolder",
+		"Locality": "Heusden-Zolder",
+		"Country": "Belgium",
+		"Information": "http://en.wikipedia.org/wiki/Zolder#"
+	}
+]
