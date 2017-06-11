@@ -32,7 +32,9 @@
         public virtual IDbSet<GrandPrix> GrandPrixes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        {                                   
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Race>()
                 .HasRequired(r => r.Season).WithMany().HasForeignKey(r => r.SeasonId);
@@ -42,9 +44,6 @@
                .HasRequired(r => r.Driver).WithMany().HasForeignKey(r => r.DriverId);
             modelBuilder.Entity<Race>()
                .HasRequired(r => r.Constructor).WithMany().HasForeignKey(r => r.ConstructorId);
-                              .
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Race>()
                 .Property(r => r.SeasonId)
