@@ -9,6 +9,7 @@
     using Models;
     using Providers;
     using Newtonsoft.Json.Converters;
+    using System.Data.Entity.Migrations;
 
     public class ImportFromJson : ICommand // to fix
     {
@@ -34,7 +35,7 @@
             }
         }
 
-        private void ImportSeasons(string json)
+        private void ImportSeasons(string json) // to fix
         {
             // in other method - "json deserializer"
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -117,12 +118,12 @@
                     FileLogger.Instance.Info($"Races: 0 rows affected!");
                     throw new ArgumentException($"Season {raceJson.Season} doesn't exist in data base! Please create a new season and import again!");
                 }
-                //to fix circuit in racejson class
-                GrandPrix grandPrix = GetGrandPrix(raceJson.Circuit);
+
+                GrandPrix grandPrix = GetGrandPrix(raceJson.GrandPrix);
                 if (grandPrix == null)
                 {
-                    grandPrix = ImportGrandPrix(raceJson.Circuit);
-                    savedGrandPrixes.Add(raceJson.Circuit);
+                    grandPrix = ImportGrandPrix(raceJson.GrandPrix);
+                    savedGrandPrixes.Add(raceJson.GrandPrix);
                 }
 
                 foreach (DriverResultJson result in raceJson.Results)
@@ -144,7 +145,7 @@
                         throw new ArgumentException($"Driver {result.Driver} doesn't exist in data base! Please create a new driver and import again!");
                     }
 
-                    string position = result.Position;
+                    string position = result.Pos;
                     if (position == null)
                     {
                         ConsoleWriter.Instance.WriteLine($"Race: 0 rows affected!");
@@ -163,7 +164,7 @@
 
                     rowAffectedCounter++;
                     Race race = new Race { Season = season, GrandPrix=grandPrix, Driver = driver, Constructor = constructor, Position = position, Score = score };
-                    db.Races.Add(race);
+                    db.Races.AddOrUpdate(race); //??
                 }
             }
 

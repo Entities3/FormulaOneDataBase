@@ -13,7 +13,7 @@ namespace Formula1.ConsoleClient.JsonModels
 
         public string Constructor { get; set; }
 
-        public string Position { get; set; }
+        public string Pos { get; set; }
 
         public string Grid { get; set; }
 
