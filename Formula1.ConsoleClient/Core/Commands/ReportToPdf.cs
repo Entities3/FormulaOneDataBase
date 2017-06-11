@@ -2,6 +2,10 @@
 {
     using System.Collections.Generic;
     using Data;
+    using System.Linq;
+    using System.Collections;
+    using WebGrease.Css.Extensions;
+    using System;
 
     public class ReportToPdf : ICommand
     {
@@ -14,47 +18,76 @@
             //to do
         }
 
-        private void GetAllDrivers()
+        private IDictionary<string, string> GetAllDrivers()
         {
-            // return type
-            //to do
+            IDictionary<string, string> result = new Dictionary<string, string>();
+            db.Drivers.ForEach(d =>
+            {
+                result[d.Name] = d.InformationUrl;
+            });
+            return result;
         }
 
-        private void GetAllConstructors()
+        private IDictionary<string, string> GetAllConstructors()
         {
-            // return type
-            //to do
+            IDictionary<string, string> result = new Dictionary<string, string>();
+            db.Constructors.ForEach(d =>
+            {
+                result[d.Name] = d.InformationUrl;
+            });
+            return result;
         }
 
-        private void GetConstructorStangingsForSeason(string season)
+        private IDictionary<string, string> GetConstructorStangingsForSeason(string season)
         {
-            // return type
-            //how to get the season parameter? get from parameters or add ReadLine() to ask for it?
-            //to do
+            IDictionary<string, string> result = new Dictionary<string, string>();
+            HashSet<string> constructors = new HashSet<string>(db.SeasonsParticipants.Where(s => s.Season.Year == season).Select(s => s.Constructor.Name).ToList().Distinct());
+            foreach (string constructor in constructors)
+            {
+                result[constructor] = db.Races.Where(r => r.Constructor.Name == constructor).Select(r => r.Score).ToList().Sum().ToString();
+            }
+            result.OrderBy(x => x.Value);
+            return result;
         }
 
-        private void GetCurrentConstructorsStandings()
+        private IDictionary<string, string> GetCurrentConstructorsStandings()
         {
-            // return type
-            //to do
+            string currentSeason = GetCurrentSeason();
+            IDictionary<string, string> result = GetConstructorStangingsForSeason(currentSeason);
+            return result;
         }
 
-        private void GetDriversStandingsForSeason(string season)
+        private IDictionary<string, string> GetDriversStandingsForSeason(string season)
         {
-            // return type
-            //to do
+            IDictionary<string, string> result = new Dictionary<string, string>();
+            HashSet<string> drivers = new HashSet<string>(db.SeasonsParticipants.Where(s => s.Season.Year == season).Select(s => s.Driver.Name).ToList().Distinct());
+            foreach (string driver in drivers)
+            {
+                result[driver] = GetDriverScoreForSeason(season);
+            }
+            result.OrderBy(x => x.Value);
+            return result;
         }
 
-        private void GetCurrentDriversStandings()
+        private string GetDriverScoreForSeason(string season)
         {
-            // return type
-            //to do
+            throw new NotImplementedException();
         }
 
-        private void GetDriverActiveSeasons(string driverName)
+        private IDictionary<string, string> GetCurrentDriversStandings()
         {
-            // return type
-            //to do
+            string currentSeason = GetCurrentSeason();
+            IDictionary<string, string> result = GetDriversStandingsForSeason(currentSeason);
+            return result;
+        }
+
+        private IDictionary<string, string> GetDriverActiveSeasons(string driverName)
+        {
+            IDictionary<string, string> result = new Dictionary<string, string>();
+            HashSet<string> seasons = new HashSet<string>(db.Drivers.Where(d => d.Name == driverName).FirstOrDefault().Seasons.Select(s => s.Year).ToList().Distinct());
+
+           foreach
+            return result;
         }
 
         private void GetConstructorActiveSeasons(string constructorName)
@@ -68,6 +101,13 @@
             // return type
             //to do
         }
+
+        private string GetCurrentSeason()
+        {
+            string currentSeason = db.Seasons.OrderByDescending(s => s.Year).FirstOrDefault().Year.ToString();
+            return currentSeason;
+        }
+
 
         // and many others
     }
