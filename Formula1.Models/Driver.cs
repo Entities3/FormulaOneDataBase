@@ -6,13 +6,11 @@
 
     public class Driver
     {
-        //   private ICollection<Season> seasons;
-        private ICollection<Race> races;
+        private ICollection<Season> seasons;
 
         public Driver()
         {
-            //        this.seasons = new HashSet<Season>();
-            this.races = new List<Race>();
+            this.seasons = new HashSet<Season>();
         }
 
         public int Id { get; set; }
@@ -26,27 +24,15 @@
         [Required]
         public virtual Nationality Nationality { get; set; }
 
-        //   public virtual ICollection<Season> Seasons
-        //   {
-        //       get
-        //       {
-        //           return this.seasons;
-        //       }
-        //       set
-        //       {
-        //           this.seasons = value;
-        //       }
-        //   }
-
-        public virtual ICollection<Race> Races
+        public virtual ICollection<Season> Seasons
         {
             get
             {
-                return this.races;
+                return this.seasons;
             }
             set
             {
-                this.races = value;
+                this.seasons = value;
             }
         }
 

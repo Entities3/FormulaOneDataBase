@@ -6,12 +6,12 @@
 
     public class Constructor
     {
-        //       private ICollection<Season> seasons;
+        private ICollection<Season> seasons;
 
-        //     public Constructor()
-        //     {
-        //         this.seasons = new HashSet<Season>();
-        //     }
+        public Constructor()
+        {
+            this.seasons = new HashSet<Season>();
+        }
 
         public int Id { get; set; }
 
@@ -24,17 +24,17 @@
         [Required]
         public virtual Nationality Nationality { get; set; }
 
-        //      public virtual ICollection<Season> Seasons
-        //      {
-        //          get
-        //          {
-        //              return this.seasons;
-        //          }
-        //          set
-        //          {
-        //              this.seasons = value;
-        //          }
-        //      }
+        public virtual ICollection<Season> Seasons
+        {
+            get
+            {
+                return this.seasons;
+            }
+            set
+            {
+                this.seasons = value;
+            }
+        }
 
         [Column(TypeName = "ntext")]
         public string InformationUrl { get; set; }

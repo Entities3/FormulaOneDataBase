@@ -9,16 +9,20 @@
         [Required]
         public string Position { get; set; }
 
-        [Required]
+        public int GrandPrixId { get; set; }
+
         public virtual GrandPrix GrandPrix { get; set; }
 
-        [Required]
+        public int SeasonId { get; set; }
+
         public virtual Season Season { get; set; }
 
-        [Required]
+        public int DriverId { get; set; }
+
         public virtual Driver Driver { get; set; }
 
-        [Required]
+        public int ConstructorId { get; set; }
+
         public virtual Constructor Constructor { get; set; }
 
         [Required]

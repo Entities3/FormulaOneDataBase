@@ -9,9 +9,11 @@
         //    private ICollection<Circuit> circuits;
         //   private ICollection<Constructor> constructors;
         //    private ICollection<Driver> drivers;
+        private ICollection<Race> races;
 
         public Season()
         {
+            this.races = new HashSet<Race>();
             //       this.circuits = new HashSet<Circuit>();
             //     this.constructors = new HashSet<Constructor>();
             //     this.drivers = new HashSet<Driver>();
@@ -24,6 +26,18 @@
         [MaxLength(4)]
         [Index(IsUnique = true)]
         public string Year { get; set; }
+
+        public virtual ICollection<Race> Races
+        {
+            get
+            {
+                return this.races;
+            }
+            set
+            {
+                this.races = value;
+            }
+        }
 
         //  public virtual ICollection<Circuit> Circuits
         //  {
