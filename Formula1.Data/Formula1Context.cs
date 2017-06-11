@@ -2,7 +2,9 @@
 {
     using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration.Conventions;
-    using Models;  
+    using Models;
+    using System.Data.Entity.Infrastructure.Annotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Formula1Context : DbContext
     {
@@ -31,18 +33,42 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //          modelBuilder.Entity<Driver>()
-            //              .HasMany(d=>d.Seasons)
-            //             .WithMany(s=>s.Drivers)
-            //              .Map(m =>
-            //              {
-            //                 m.ToTable("SeasonParticipants");
-            //                 m.MapLeftKey("Season_Id");
-            //                 m.MapRightKey("Driver_Id");
-            //             });
 
+            modelBuilder.Entity<Race>()
+                .HasRequired(r => r.Season).WithMany().HasForeignKey(r => r.SeasonId);
+            modelBuilder.Entity<Race>()
+                .HasRequired(r => r.GrandPrix).WithMany().HasForeignKey(r => r.GrandPrixId);
+            modelBuilder.Entity<Race>()
+               .HasRequired(r => r.Driver).WithMany().HasForeignKey(r => r.DriverId);
+            modelBuilder.Entity<Race>()
+               .HasRequired(r => r.Constructor).WithMany().HasForeignKey(r => r.ConstructorId);
+                              .
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Race>()
+                .Property(r => r.SeasonId)
+                .IsRequired()
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(
+                        new IndexAttribute("IX_Race_Driver", 1) { IsUnique = true }));
+
+            modelBuilder.Entity<Race>()
+               .Property(r => r.GrandPrixId)
+               .IsRequired()
+               .HasColumnAnnotation(
+                   IndexAnnotation.AnnotationName,
+                   new IndexAnnotation(
+                       new IndexAttribute("IX_Race_Driver", 2) { IsUnique = true }));
+
+            modelBuilder.Entity<Race>()
+               .Property(r => r.DriverId)
+               .IsRequired()
+               .HasColumnAnnotation(
+                   IndexAnnotation.AnnotationName,
+                   new IndexAnnotation(
+                       new IndexAttribute("IX_Race_Driver", 3) { IsUnique = true })); 
 
             base.OnModelCreating(modelBuilder);
         }
