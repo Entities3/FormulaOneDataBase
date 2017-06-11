@@ -7,10 +7,12 @@
     public class Constructor
     {
         private ICollection<Season> seasons;
+        private ICollection<Race> races;
 
         public Constructor()
         {
             this.seasons = new HashSet<Season>();
+            this.races = new HashSet<Race>();
         }
 
         public int Id { get; set; }
@@ -33,6 +35,18 @@
             set
             {
                 this.seasons = value;
+            }
+        }
+
+        public virtual ICollection<Race> Races
+        {
+            get
+            {
+                return this.races;
+            }
+            set
+            {
+                this.races = value;
             }
         }
 
