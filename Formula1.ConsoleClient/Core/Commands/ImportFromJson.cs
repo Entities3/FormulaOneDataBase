@@ -8,6 +8,7 @@
     using JsonModels;
     using Models;
     using Providers;
+    using Newtonsoft.Json.Converters;
 
     public class ImportFromJson : ICommand // to fix
     {
@@ -109,7 +110,6 @@
 
             foreach (RaceJson raceJson in racesJson)
             {
-                rowToAffectCounter++;
                 Season season = GetSeason(raceJson.Season);
                 if (season == null)
                 {
@@ -127,6 +127,7 @@
 
                 foreach (DriverResultJson result in raceJson.Results)
                 {
+                    rowToAffectCounter++;
                     Constructor constructor = GetConstructor(result.Constructor);
                     if (constructor == null)
                     {

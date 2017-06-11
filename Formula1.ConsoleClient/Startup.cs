@@ -5,14 +5,20 @@
     using JsonModels;
     using System;
     using System.Collections.Generic;
+    using System.Reflection;
     using System.Web.Script.Serialization;
 
     public class Startup
     {
+        
+
         static void Main(string[] args)
         {
-            Engine engine = new Engine(null, null, null, null);
-            engine.Start();
+            //   Engine engine = new Engine(null, null, null, null);
+            //   engine.Start();
+
+
+
             //
             //    string filePath = @"C:\Users\Acer\Downloads\1.json";
             //    string json = JsonReader.Instance.Read(filePath);

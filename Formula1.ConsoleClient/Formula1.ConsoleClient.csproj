@@ -58,6 +58,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -74,7 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Container\Formula1NinjectModule.cs" />
     <Compile Include="Core\Commands\ICommand.cs" />
+    <Compile Include="Core\Commands\Importer.cs" />
     <Compile Include="Core\Commands\ImportFromJson.cs" />
     <Compile Include="Core\Commands\ReportDataBaseImportActivity.cs" />
     <Compile Include="Core\Commands\ReportToPdf.cs" />
@@ -83,6 +89,8 @@
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Factories\CommandFactory.cs" />
+    <Compile Include="Core\Factories\ICommandFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
