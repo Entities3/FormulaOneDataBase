@@ -82,22 +82,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Container\Formula1NinjectModule.cs" />
     <Compile Include="Core\Commands\ICommand.cs" />
-    <Compile Include="Core\Commands\ImportFromJson.cs" />
-    <Compile Include="Core\Commands\ReportDataBaseImportActivity.cs" />
-    <Compile Include="Core\Commands\ReportToPdf.cs" />
+    <Compile Include="Core\Commands\Import.cs" />
+    <Compile Include="Core\Commands\Export.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
-    <Compile Include="Core\Contracts\IExporter.cs" />
+    <Compile Include="Core\Contracts\IDeserializer.cs" />
+    <Compile Include="Core\Contracts\ISerializer.cs" />
     <Compile Include="Core\Contracts\ILogger.cs" />
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\IEngine.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
+    <Compile Include="Core\Providers\JsonDeserializer.cs" />
     <Compile Include="Core\Providers\FileLogger.cs" />
-    <Compile Include="Core\Providers\JsonReader.cs" />
-    <Compile Include="Core\Providers\PdfExporter.cs" />
+    <Compile Include="Core\Providers\FileReader.cs" />
+    <Compile Include="Core\Providers\PdfSerializer.cs" />
     <Compile Include="JsonModels\CircuitJson.cs" />
     <Compile Include="JsonModels\ConstructorJson.cs" />
     <Compile Include="JsonModels\DriverJson.cs" />

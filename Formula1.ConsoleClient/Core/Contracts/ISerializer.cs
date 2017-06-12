@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public interface IExporter
+    public interface ISerializer
     {
         void Export(string path, IDictionary<string, string> list, IEnumerable<string> headers);
     }
