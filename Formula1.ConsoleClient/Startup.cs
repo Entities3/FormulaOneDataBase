@@ -17,14 +17,16 @@
 
         static void Main(string[] args)
         {
-                  Engine engine = new Engine(null, null, null, null);
-               engine.Start();
+            //         Engine engine = new Engine(null, null, null, null);
+            //      engine.Start();
 
-       //   var result= ReportToPdf.GetConstructorActiveSeasons("Toro Rosso");
-       //    foreach (var key in result.Keys)
-       //    {
-       //        Console.WriteLine($"{key} ---- {result[key]}");
-       //    }
+            var result = ReportToPdf.GetCurrentSeason();
+            
+            Console.WriteLine(result);
+  //    foreach (var key in result.Keys)
+  //    {
+  //        Console.WriteLine($"{key} ---- {result[key]}");
+  //    }
 
       //    var season = "2015";
       //    var db = new Formula1Context();

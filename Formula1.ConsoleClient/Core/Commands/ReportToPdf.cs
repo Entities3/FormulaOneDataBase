@@ -28,7 +28,7 @@
 
             return result;
         }
-       
+
         public static IDictionary<string, string> GetAllConstructors()
         {
             IDictionary<string, string> result = new Dictionary<string, string>();
@@ -39,11 +39,11 @@
 
             return result;
         }
-      
+
         public static IDictionary<string, string> GetConstructorsStangingForSeason(string season)
         {
             IDictionary<string, string> result = new Dictionary<string, string>();
-            HashSet<string> constructors = 
+            HashSet<string> constructors =
                 new HashSet<string>(db.SeasonsParticipants
                 .Where(s => s.Season.Year == season)
                 .Select(s => s.Constructor.Name).ToList().Distinct());
@@ -53,16 +53,17 @@
                 result[constructor] = GetConstructorScoreForSeason(constructor, season);
             }
 
-            result.OrderBy(x => x.Value); //???
-            return result;
+            var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+            return sort;
         }
 
         public static string GetConstructorScoreForSeason(string constructorName, string season)
         {
             string result = string.Empty;
-            db.Constructors.Where(d => d.Name == constructorName).FirstOrDefault()
-                .Races.Where(r => r.Season.Year == season)
-                .Select(r => r.Score).ToList().Sum().ToString();
+            result = db.Races.Where(r => r.Constructor.Name == constructorName).Where(r => r.Season.Year == season).Select(r => r.Score).ToList().Sum().ToString();
+            //     db.Constructors.Where(d => d.Name == constructorName).FirstOrDefault()
+            //         .Races.Where(r => r.Season.Year == season)
+            //         .Select(r => r.Score).ToList().Sum().ToString();
 
             return result;
         }
@@ -78,7 +79,7 @@
         public static IDictionary<string, string> GetDriversStandingForSeason(string season)
         {
             IDictionary<string, string> result = new Dictionary<string, string>();
-            HashSet<string> drivers = 
+            HashSet<string> drivers =
                 new HashSet<string>(db.SeasonsParticipants
                 .Where(s => s.Season.Year == season)
                 .Select(s => s.Driver.Name).ToList().Distinct());
@@ -87,17 +88,18 @@
                 result[driver] = GetDriverScoreForSeason(driver, season);
             }
 
-            result.OrderBy(x => x.Value);
-            return result; //??
+            var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+            return sort;
         }
 
         public static string GetDriverScoreForSeason(string driverName, string season)
         {
             string result = string.Empty;
-            db.Drivers.Where(d => d.Name == driverName)
-                .FirstOrDefault()
-                .Races.Where(r => r.Season.Year == season)
-                .Select(r => r.Score).ToList().Sum().ToString();
+            result = db.Races.Where(r => r.Driver.Name == driverName).Where(r => r.Season.Year == season).Select(r => r.Score).ToList().Sum().ToString();
+            //    db.Drivers.Where(d => d.Name == driverName)
+            //        .FirstOrDefault()
+            //        .Races.Where(r => r.Season.Year == season)
+            //        .Select(r => r.Score).ToList().Sum().ToString();
 
             return result;
         }
@@ -105,6 +107,7 @@
         public static IDictionary<string, string> GetCurrentDriversStandings()
         {
             string currentSeason = GetCurrentSeason();
+            Console.WriteLine(currentSeason);
             IDictionary<string, string> result = GetDriversStandingForSeason(currentSeason);
 
             return result;
@@ -113,29 +116,43 @@
         private IDictionary<string, string> GetDriverActiveSeasons(string driverName)
         {
             IDictionary<string, string> result = new Dictionary<string, string>();
-            db.Drivers.Where(d => d.Name == driverName)
-                .FirstOrDefault().Seasons
-                .ForEach(s =>
-            {
-                result[$"Season {s.Year}"] = GetDriverScoreForSeason(driverName, s.Year);
-            });
+            HashSet<string> seasons = new HashSet<string>(db.SeasonsParticipants.Where(s => s.Driver.Name == driverName)
+                  .Select(s => s.Season.Year).ToList());
 
-            result.OrderBy(x => x.Value); //??
-            return result;
+            foreach (string season in seasons)
+            {
+                result[season] = GetDriverScoreForSeason(driverName, season);
+            }
+            //      db.Drivers.Where(d => d.Name == driverName)
+            //          .FirstOrDefault().Seasons
+            //          .ForEach(s =>
+            //          {
+            //              result[$"Season {s.Year}"] = GetDriverScoreForSeason(driverName, s.Year);
+            //          });
+
+            var sort = result.OrderBy(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+            return sort;
         }
 
         public static IDictionary<string, string> GetConstructorActiveSeasons(string constructorName)
         {
             IDictionary<string, string> result = new Dictionary<string, string>();
-            db.Constructors.Where(d => d.Name == constructorName)
-                .FirstOrDefault().Seasons
-                .ForEach(s =>
-                {
-                    result[$"Season {s.Year}"] = GetConstructorScoreForSeason(constructorName, s.Year);
-                });
+            HashSet<string> seasons = new HashSet<string>(db.SeasonsParticipants.Where(s => s.Constructor.Name == constructorName)
+                  .Select(s => s.Season.Year).ToList());
 
-            result.OrderBy(x => x.Value); //??
-            return result;
+            foreach (string season in seasons)
+            {
+                result[season] = GetConstructorScoreForSeason(constructorName, season);
+            }
+            //      db.Constructors.Where(d => d.Name == constructorName)
+            //          .FirstOrDefault().Seasons
+            //          .ForEach(s =>
+            //          {
+            //              result[$"Season {s.Year}"] = GetConstructorScoreForSeason/(constructorName, /s.Year);
+            //          });
+
+            var sort = result.OrderBy(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+            return sort;
         }
 
         public static IDictionary<string, string> GetRaceResults(string season, string grandPrixName)
@@ -144,11 +161,11 @@
             db.Races.Where(r => r.Season.Year == season).Where(r => r.GrandPrix.Name == grandPrixName)
                 .ForEach(r =>
                 {
-                    result[$"Driver: {r.Driver}/ Constructor: {r.Constructor}"] = r.Score.ToString();
+                    result[$"Driver: {r.Driver.Name}/ Constructor: {r.Constructor.Name}"] = r.Score.ToString();
                 });
 
-            result.OrderBy(x => x.Value);
-            return result;
+            var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+            return sort;
         }
 
         public static string GetCurrentSeason()
