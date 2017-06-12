@@ -17,7 +17,7 @@
 
         public virtual IDbSet<Nationality> Nationaties { get; set; }
 
-        public virtual IDbSet<Circuit> Circuits { get; set; }
+        //public virtual IDbSet<Circuit> Circuits { get; set; }
 
         //public virtual IDbSet<Country> Countries { get; set; }
 
@@ -29,7 +29,7 @@
 
         public virtual IDbSet<SeasonParticipants> SeasonsParticipants { get; set; }
 
-        //public virtual IDbSet<GrandPrix> GrandPrixes { get; set; }
+        public virtual IDbSet<GrandPrix> GrandPrixes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {                                   

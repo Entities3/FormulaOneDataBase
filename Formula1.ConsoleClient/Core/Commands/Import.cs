@@ -13,6 +13,7 @@
     public class Import : ICommand
     {
         private Formula1Context db;
+        private Formula1SQLiteContext dbSQLite;
         private IDesrializer deserializer;
         private IReader reader;
         private IWriter writer;
@@ -25,6 +26,7 @@
             this.writer = writer;
             this.logger = logger;
             this.db = new Formula1Context();
+            this.dbSQLite = new Formula1SQLiteContext();
         }
 
         // example input command: "import from json (pathFile) drivers"
@@ -352,8 +354,8 @@
         private Country ImportCountry(string countryName)
         {
             Country country = new Country() { Name = countryName };
-            db.Countries.Add(country);
-            db.SaveChanges();
+            dbSQLite.Countries.Add(country);
+            dbSQLite.SaveChanges();
             this.writer.WriteLine($"Created new country {countryName}!");
             this.logger.Info($"Created new country {countryName}!");
             return country;
@@ -361,7 +363,7 @@
 
         private Country GetCountry(string countryName)
         {
-            Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
+            Country country = dbSQLite.Countries.FirstOrDefault(c => c.Name == countryName);
             return country;
         }
     }
