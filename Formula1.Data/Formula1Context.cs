@@ -37,13 +37,13 @@
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Race>()
-                .HasRequired(r => r.Season).WithMany().HasForeignKey(r => r.SeasonId);
+                .HasRequired(r => r.Season).WithMany(r => r.Races).HasForeignKey(r => r.SeasonId);
             modelBuilder.Entity<Race>()
-                .HasRequired(r => r.GrandPrix).WithMany().HasForeignKey(r => r.GrandPrixId);
+                .HasRequired(r => r.GrandPrix).WithMany(r => r.Races).HasForeignKey(r => r.GrandPrixId);
             modelBuilder.Entity<Race>()
-               .HasRequired(r => r.Driver).WithMany().HasForeignKey(r => r.DriverId);
+               .HasRequired(r => r.Driver).WithMany(r => r.Races).HasForeignKey(r => r.DriverId);
             modelBuilder.Entity<Race>()
-               .HasRequired(r => r.Constructor).WithMany().HasForeignKey(r => r.ConstructorId);
+               .HasRequired(r => r.Constructor).WithMany(r => r.Races).HasForeignKey(r => r.ConstructorId);
 
             modelBuilder.Entity<Race>()
                 .Property(r => r.SeasonId)

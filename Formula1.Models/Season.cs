@@ -27,17 +27,7 @@
         [Index(IsUnique = true)]
         public string Year { get; set; }
 
-        public virtual ICollection<Race> Races
-        {
-            get
-            {
-                return this.races;
-            }
-            set
-            {
-                this.races = value;
-            }
-        }
+        public virtual ICollection<Race> Races { get; set; }
 
         //  public virtual ICollection<Circuit> Circuits
         //  {

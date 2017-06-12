@@ -1,5 +1,6 @@
 ﻿namespace Formula1.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,5 +13,7 @@
         [MaxLength(50)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+
+        public virtual ICollection<Race> Races { get; set; }
     }
 }

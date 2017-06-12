@@ -17,21 +17,39 @@
         // example input command:"report to pdf (path) getalldrivers 2017"
         public void Execute(IList<string> parameters)
         {
+
+
             string filePath = parameters[0];
-            string command = parameters[1];
-            if (parameters.Count > 2)
-            {
-                string additionalParam = parameters[2];
-            }
+            parameters.RemoveAt(0);
+            string command = parameters[0];
+            parameters.RemoveAt(0);
+
+            string[] additionalParam = new string[parameters.Count];
+
+            int i = 0;
+
+            while  (parameters.Count > 0)
+                {
+                    additionalParam[i] = parameters[i];
+                    parameters.RemoveAt(0);
+                    i++;
+                }
+
 
             switch (command.ToLower())
             {
                 case "getalldrivers": exporter.Export(filePath, GetAllDrivers(), headers); break;
-                    //case "constructors": this.ImportConstructors(json); break;
-                    //case "circuits": this.ImportCircuits(json); break;
-                    //case "races": this.ImportRaces(json); break;
-                    //case "seasons": this.ImportSeasons(json); break;
-                    //default: throw new ArgumentException("Invalid data to import");
+                case "getallconstructors": exporter.Export(filePath, GetAllConstructors(), headers); break;
+                case "getconstructorsstangingforseason": exporter.Export(filePath, GetConstructorsStangingForSeason(additionalParam[0]), headers); break;
+               // case "getconstructorscoreforseason": exporter.Export(filePath, GetConstructorScoreForSeason(additionalParam[0], additionalParam[1]), headers); break;
+                case "getcurrentconstructorsctandings": exporter.Export(filePath, GetCurrentConstructorsStandings(), headers); break;
+                case "getdriversstandingforseason": exporter.Export(filePath, GetDriversStandingForSeason(additionalParam[0]), headers); break;
+                case "getcurrentdriversstandings": exporter.Export(filePath, GetCurrentDriversStandings(), headers); break;
+                case "getdriveractiveseasons": exporter.Export(filePath, GetDriverActiveSeasons(additionalParam[0]), headers); break;
+                case "getconstructoractiveseasons": exporter.Export(filePath, GetConstructorActiveSeasons(additionalParam[0]), headers); break;
+                case "GetRaceResults": exporter.Export(filePath, GetRaceResults(additionalParam[0], additionalParam[1]), headers); break;
+
+                default: throw new ArgumentException("Invalid data to export");
             }
         }
 
@@ -43,6 +61,7 @@
                 result[d.Name] = d.InformationUrl;
             });
 
+            headers.Clear();
             headers.Add("Driver Name");
             headers.Add("Information Url");
 
@@ -56,6 +75,10 @@
             {
                 result[d.Name] = d.InformationUrl;
             });
+
+            headers.Clear();
+            headers.Add("Constructor Name");
+            headers.Add("Information Url");
 
             return result;
         }
@@ -74,6 +97,11 @@
             }
 
             var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
+
+            headers.Clear();
+            headers.Add("Constructor Name");
+            headers.Add("Score");
+
             return sort;
         }
 
@@ -84,6 +112,9 @@
             //     db.Constructors.Where(d => d.Name == constructorName).FirstOrDefault()
             //         .Races.Where(r => r.Season.Year == season)
             //         .Select(r => r.Score).ToList().Sum().ToString();
+
+            headers.Clear();
+            headers.Add("Score");
 
             return result;
         }
@@ -107,6 +138,10 @@
             {
                 result[driver] = GetDriverScoreForSeason(driver, season);
             }
+
+            headers.Clear();
+            headers.Add("Driver Name");
+            headers.Add("Score");
 
             var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
             return sort;
@@ -150,6 +185,10 @@
             //              result[$"Season {s.Year}"] = GetDriverScoreForSeason(driverName, s.Year);
             //          });
 
+            headers.Clear();
+            headers.Add("Driver Name");
+            headers.Add("Season");
+
             var sort = result.OrderBy(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
             return sort;
         }
@@ -171,6 +210,10 @@
             //              result[$"Season {s.Year}"] = GetConstructorScoreForSeason/(constructorName, /s.Year);
             //          });
 
+            headers.Clear();
+            headers.Add("Constructor Name");
+            headers.Add("Season Score");
+
             var sort = result.OrderBy(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
             return sort;
         }
@@ -183,6 +226,10 @@
                 {
                     result[$"Driver: {r.Driver.Name}/ Constructor: {r.Constructor.Name}"] = r.Score.ToString();
                 });
+
+            headers.Clear();
+            headers.Add("Driver Name");
+            headers.Add("Constructor");
 
             var sort = result.OrderByDescending(x => int.Parse(x.Value)).ToDictionary(x => x.Key, x => x.Value);
             return sort;
