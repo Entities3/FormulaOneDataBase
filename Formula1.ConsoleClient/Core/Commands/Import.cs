@@ -342,27 +342,27 @@
                     Name = nationalityName
                 };
                 db.Nationaties.Add(nationality);
-                this.writer.WriteLine($"Nationalities: row affected!");
-                this.logger.Info($"Nationalities: row affected!");
+                this.writer.WriteLine($"Created new nationality {nationalityName}!");
+                this.logger.Info($"Created new nationality {nationalityName}");
                 db.SaveChanges();
                 return nationality;
             }
         }
 
-        private Country ImportCountry(string countryName)
-        {
-            Country country = new Country() { Name = countryName };
-            db.Countries.Add(country);
-            db.SaveChanges();
-            this.writer.WriteLine($"Created new country {countryName}!");
-            this.logger.Info($"Created new country {countryName}!");
-            return country;
-        }
+  //     private Country ImportCountry(string countryName)
+  //     {
+  //         Country country = new Country() { Name = countryName };
+  //         db.Countries.Add(country);
+  //         db.SaveChanges();
+  //         this.writer.WriteLine($"Created new country {countryName}!");
+  //         this.logger.Info($"Created new country {countryName}!");
+  //         return country;
+  //     }
 
-        private Country GetCountry(string countryName)
-        {
-            Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
-            return country;
-        }
+  //      private Country GetCountry(string countryName)
+  //      {
+  //          Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
+  //          return country;
+  //      }
     }
 }
