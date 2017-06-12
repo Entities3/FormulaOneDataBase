@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Formula1.ConsoleClient/bin/Debug/Formula1.ConsoleClient.vshost.exe.manifest
