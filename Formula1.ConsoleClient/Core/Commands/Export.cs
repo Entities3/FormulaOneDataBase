@@ -32,30 +32,33 @@
             string command = parameters[0];
             parameters.RemoveAt(0);
 
-            string[] additionalParam = new string[parameters.Count];
+  //          string[] additionalParam = new string[parameters.Count];
 
-            int i = 0;
+  //          int i = 0;
 
-            while (parameters.Count > 0)
-            {
-                additionalParam[i] = parameters[i];
-                parameters.RemoveAt(0);
-                i++;
-            }
+   //         while (parameters.Count > 0)
+   //         {
+   //             additionalParam[i] = parameters[i];
+   //             parameters.RemoveAt(0);
+   //             i++;
+   //         }
 
 
             switch (command.ToLower())
             {
                 case "getalldrivers": serializer.Export(filePath, GetAllDrivers(), headers); break;
                 case "getallconstructors": serializer.Export(filePath, GetAllConstructors(), headers); break;
-                case "getconstructorsstangingforseason": serializer.Export(filePath, GetConstructorsStangingForSeason(additionalParam[0]), headers); break;
+                case "getconstructorsstangingforseason": serializer.Export(filePath, GetConstructorsStangingForSeason(parameters[0]), headers); break;
                 // case "getconstructorscoreforseason": exporter.Export(filePath, GetConstructorScoreForSeason(additionalParam[0], additionalParam[1]), headers); break;
-                case "getcurrentconstructorsctandings": serializer.Export(filePath, GetCurrentConstructorsStandings(), headers); break;
-                case "getdriversstandingforseason": serializer.Export(filePath, GetDriversStandingForSeason(additionalParam[0]), headers); break;
+                case "getcurrentconstructorstandings": serializer.Export(filePath, GetCurrentConstructorsStandings(), headers); break;
+                case "getdriversstandingforseason": serializer.Export(filePath, GetDriversStandingForSeason(string.Join(" ",parameters)), headers); break;
                 case "getcurrentdriversstandings": serializer.Export(filePath, GetCurrentDriversStandings(), headers); break;
-                case "getdriveractiveseasons": serializer.Export(filePath, GetDriverActiveSeasons(additionalParam[0]), headers); break;
-                case "getconstructoractiveseasons": serializer.Export(filePath, GetConstructorActiveSeasons(additionalParam[0]), headers); break;
-                case "getraceresults": serializer.Export(filePath, GetRaceResults(additionalParam[0], additionalParam[1]), headers); break;
+                case "getdriveractiveseasons": serializer.Export(filePath, GetDriverActiveSeasons(string.Join(" ", parameters)), headers); break;
+                case "getconstructoractiveseasons": serializer.Export(filePath, GetConstructorActiveSeasons(string.Join(" ", parameters)), headers); break;
+                case "getraceresults":
+                    string season = parameters[0];
+                    parameters.RemoveAt(0);
+                    serializer.Export(filePath, GetRaceResults(season, string.Join(" ", parameters)), headers); break;
 
                 default: throw new ArgumentException("Invalid data to export");
             }
@@ -203,6 +206,8 @@
 
         private IDictionary<string, string> GetRaceResults(string season, string grandPrixName)
         {
+            Console.WriteLine(season);
+            Console.WriteLine(grandPrixName);
             IDictionary<string, string> result = new Dictionary<string, string>();
             this.db.Races.Where(r => r.Season.Year == season).Where(r => r.GrandPrix.Name == grandPrixName)
                 .ForEach(r =>
