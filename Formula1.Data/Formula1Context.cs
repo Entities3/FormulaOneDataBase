@@ -1,10 +1,10 @@
 ﻿namespace Formula1.Data
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.ModelConfiguration.Conventions;
     using Models;
-    using System.Data.Entity.Infrastructure.Annotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Formula1Context : DbContext
     {
@@ -17,9 +17,9 @@
 
         public virtual IDbSet<Nationality> Nationaties { get; set; }
 
-        //public virtual IDbSet<Circuit> Circuits { get; set; }
+        //   public virtual IDbSet<Circuit> Circuits { get; set; }
 
-        //public virtual IDbSet<Country> Countries { get; set; }
+        //   public virtual IDbSet<Country> Countries { get; set; }
 
         public virtual IDbSet<Constructor> Constructors { get; set; }
 
@@ -32,7 +32,7 @@
         public virtual IDbSet<GrandPrix> GrandPrixes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {                                   
+        {
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
@@ -67,7 +67,7 @@
                .HasColumnAnnotation(
                    IndexAnnotation.AnnotationName,
                    new IndexAnnotation(
-                       new IndexAttribute("IX_Race_Driver", 3) { IsUnique = true })); 
+                       new IndexAttribute("IX_Race_Driver", 3) { IsUnique = true }));
 
             base.OnModelCreating(modelBuilder);
         }

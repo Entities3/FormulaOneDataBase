@@ -2,16 +2,7 @@
 {
     using Container;
     using Core;
-    using Core.Commands;
-    using Core.Providers;
-    using Data;
-    using JsonModels;
     using Ninject;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Web.Script.Serialization;
 
     public class Startup
     {

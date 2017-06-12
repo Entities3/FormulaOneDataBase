@@ -77,6 +77,10 @@
     <Compile Include="SQLiteMigrations\SQLiteConfiguration.cs" />
     <Compile Include="Formula1Context.cs" />
     <Compile Include="Formula1SQLiteContext.cs" />
+    <Compile Include="Migrations\201706121909363_table fixes.cs" />
+    <Compile Include="Migrations\201706121909363_table fixes.Designer.cs">
+      <DependentUpon>201706121909363_table fixes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +95,11 @@
       <Project>{F7433AC7-1E9F-4120-A226-5A22A74B51E3}</Project>
       <Name>Formula1.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706121909363_table fixes.resx">
+      <DependentUpon>201706121909363_table fixes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
