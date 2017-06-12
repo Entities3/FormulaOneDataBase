@@ -5,40 +5,26 @@
 
     public class FileLogger : ILogger
     {
-        private static FileLogger instance;
-        private static ILog log;
+        private ILog log;
 
-        private FileLogger()
+        public FileLogger(ILog log)
         {
-            log = LogManager.GetLogger(typeof(FileLogger));
-        }
-
-        public static FileLogger Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new FileLogger();
-                }
-
-                return instance;
-            }
+            this.log = log;
         }
 
         public void Info(string msg)
         {
-            log.Info(msg);
+            this.log.Info(msg);
         }
 
         public void Error(string msg)
         {
-            log.Error(msg);
+            this.log.Error(msg);
         }
 
         public void Fatal(string msg)
         {
-            log.Fatal(msg);
+            this.log.Fatal(msg);
         }
     }
 }

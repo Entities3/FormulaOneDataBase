@@ -1,10 +1,12 @@
 ﻿namespace Formula1.ConsoleClient
 {
+    using Container;
     using Core;
     using Core.Commands;
     using Core.Providers;
     using Data;
     using JsonModels;
+    using Ninject;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -17,7 +19,9 @@
 
         static void Main(string[] args)
         {
-            Engine engine = new Engine(null, null, null, null);
+            IKernel kernel = new StandardKernel(new Formula1NinjectModule());
+
+            IEngine engine = kernel.Get<IEngine>();
             engine.Start();
 
             //var result = ReportToPdf.GetCurrentSeason();

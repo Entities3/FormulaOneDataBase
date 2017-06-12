@@ -6,38 +6,34 @@
     using System.Reflection;
     using Commands;
     using Contracts;
+    using Providers;
+    using Ninject;
+    using log4net;
+    using Container;
+    using Ninject.Parameters;
 
     public class CommandParser : ICommandParser
     {
-        private static ICommandParser instance;
-
-        private CommandParser()
-        {
-        }
-
-        public static ICommandParser Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new CommandParser();
-                }
-                return instance;
-            }
-        }
+        private readonly IKernel kernel = new StandardKernel(new Formula1NinjectModule());
 
         public ICommand ParseCommand(string fullCommand)
         {
             List<string> commandNameParts = fullCommand.Split(' ').ToList();
-            if (commandNameParts.Count < 3)
+            if (commandNameParts.Count < 1)
             {
                 throw new ArgumentException("Invalid command!");
             }
 
-            string commandName = string.Join("", commandNameParts.GetRange(0, 3));
+            string commandName = commandNameParts[0];
             TypeInfo commandTypeInfo = this.FindCommand(commandName);
-            ICommand command = Activator.CreateInstance(commandTypeInfo) as ICommand;
+            string sourceName = commandNameParts[2];
+
+            //     object[] args = new object[] { this.kernel.Get<IDesrializer>(),
+            //         this.kernel.Get<IReader>("JsonReader"),
+            //         this.kernel.Get<IWriter>(),
+            //         this.kernel.Get<ILogger>() };
+            ICommand command = this.kernel.Get<ICommand>(commandName);
+                //,new[] {            new ConstructorArgument("pdf", this.kernel.Get<IDesrializer>(sourceName))});
 
             return command;
         }

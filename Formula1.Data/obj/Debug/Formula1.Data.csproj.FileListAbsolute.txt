@@ -24,3 +24,15 @@ C:\Users\Acer\Desktop\Formula1\Formula1.Data\bin\Debug\EntityFramework.SqlServer
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.csprojResolveAssemblyReference.cache
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.dll
 C:\Users\Acer\Desktop\Formula1\Formula1.Data\obj\Debug\Formula1.Data.pdb
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\Formula1.Data.dll.config
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\Formula1.Data.dll
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\Formula1.Data.pdb
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\EntityFramework.dll
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\Formula1.Models.dll
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\Formula1.Models.pdb
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\EntityFramework.xml
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\obj\Debug\Formula1.Data.csprojResolveAssemblyReference.cache
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\obj\Debug\Formula1.Data.dll
+C:\Users\Acer\Desktop\FormulaOneDataBase\Formula1.Data\obj\Debug\Formula1.Data.pdb

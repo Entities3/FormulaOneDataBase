@@ -1,14 +1,22 @@
 ﻿namespace Formula1.ConsoleClient.Core.Providers
 {
-    using Contracts;
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Contracts;
     using iTextSharp.text;
     using iTextSharp.text.pdf;
 
-    public class PdfExporter : IExporter
+    public class PdfSerializer : ISerializer
     {
+        private ILogger logger;
+        private IWriter writer;
+
+        public PdfSerializer(IWriter writer, ILogger logger)
+        {
+            this.writer = writer;
+            this.logger = logger;
+        }
         public void Export(string path, IDictionary<string, string> list, IEnumerable<string> headers)
         {
             PdfDocument pdfDoc = new PdfDocument();
@@ -59,11 +67,11 @@
             }
 
             ExportDoc.Add(table);
-            
+
             ExportDoc.Close();
 
-            ConsoleWriter.Instance.WriteLine($"Export successful: {fileName}");
-            FileLogger.Instance.Info($"Export successful: {fileName}");
+            this.writer.WriteLine($"Export successful: {fileName}");
+            this.logger.Info($"Export successful: {fileName}");
         }
     }
 }
