@@ -3,19 +3,36 @@
     using System.Collections.Generic;
     using Data;
     using System.Linq;
-    using System.Collections;
     using WebGrease.Css.Extensions;
     using System;
+    using Providers;
 
     public class ReportToPdf : ICommand
     {
         private static Formula1Context db = new Formula1Context();
+        private static PdfExporter exporter = new PdfExporter();
+        private static ICollection<string> headers = new HashSet<string>();
 
-        // example input command:"report to pdf get all drivers"
+        //export to pdf getDriversStandingForSeason 2017
+        // example input command:"report to pdf (path) getalldrivers 2017"
         public void Execute(IList<string> parameters)
         {
+            string filePath = parameters[0];
+            string command = parameters[1];
+            if (parameters.Count > 2)
+            {
+                string additionalParam = parameters[2];
+            }
 
-            //to do
+            switch (command.ToLower())
+            {
+                case "getalldrivers": exporter.Export(filePath, GetAllDrivers(), headers); break;
+                    //case "constructors": this.ImportConstructors(json); break;
+                    //case "circuits": this.ImportCircuits(json); break;
+                    //case "races": this.ImportRaces(json); break;
+                    //case "seasons": this.ImportSeasons(json); break;
+                    //default: throw new ArgumentException("Invalid data to import");
+            }
         }
 
         public static IDictionary<string, string> GetAllDrivers()
@@ -25,6 +42,9 @@
             {
                 result[d.Name] = d.InformationUrl;
             });
+
+            headers.Add("Driver Name");
+            headers.Add("Information Url");
 
             return result;
         }

@@ -14,7 +14,9 @@
             PdfDocument pdfDoc = new PdfDocument();
             Document ExportDoc = new Document();
 
-            PdfWriter.GetInstance(ExportDoc, new FileStream(path + "/F1PDF_" + DateTime.Now.ToString("s").Replace(":", "") + ".pdf", FileMode.Create));
+            string fileName = path + "/F1PDF_" + DateTime.Now.ToString("s").Replace(":", "") + ".pdf";
+
+            PdfWriter.GetInstance(ExportDoc, new FileStream(fileName, FileMode.Create));
             ExportDoc.Open();
 
 
@@ -59,6 +61,9 @@
             ExportDoc.Add(table);
             
             ExportDoc.Close();
+
+            ConsoleWriter.Instance.WriteLine($"Export successful: {fileName}");
+            FileLogger.Instance.Info($"Export successful: {fileName}");
         }
     }
 }

@@ -17,31 +17,32 @@
 
         static void Main(string[] args)
         {
-            //         Engine engine = new Engine(null, null, null, null);
-            //      engine.Start();
+            Engine engine = new Engine(null, null, null, null);
+            engine.Start();
 
-            var result = ReportToPdf.GetCurrentSeason();
-            
-            Console.WriteLine(result);
-  //    foreach (var key in result.Keys)
-  //    {
-  //        Console.WriteLine($"{key} ---- {result[key]}");
-  //    }
+            //var result = ReportToPdf.GetCurrentSeason();
 
-      //    var season = "2015";
-      //    var db = new Formula1Context();
-      //    var result = new Dictionary<string, string>();
-      //    HashSet<string> constructors = new HashSet<string>(db.SeasonsParticipants.Where(s /=>/ s.Season.Year == season).Select(s => s.Constructor.Name).ToList().Distinct());
-      //   foreach (string constructor in constructors)
-      //   {
-      //       result[constructor] = db.Races.Where(r => r.Constructor.Name == //constructor).Select(r=>r.Score).ToList().Sum().ToString();
-      //   }
-      //
-      //    foreach (string constructor in constructors)
-      //    {
-      //        Console.WriteLine(constructor+" "+result[constructor]);
-      //    }
-            
+            //Console.WriteLine(result);
+            //    foreach (var key in result.Keys)
+            //    {
+            //        Console.WriteLine($"{key} ---- {result[key]}");
+            //    }
+
+            //var season = "2015";
+            //var db = new Formula1Context();
+            //var result = new Dictionary<string, string>();
+            //HashSet<string> constructors = new HashSet<string>(db.SeasonsParticipants.Where(s => s.Season.Year == season).Select(s => s.Constructor.Name).ToList().Distinct());
+            //foreach (string constructor in constructors)
+            //{
+            //    result[constructor] = db.Races.Where(r => r.Constructor.Name == constructor).Select(r=>r.Score).ToList().Sum().ToString();
+            //}
+
+            //foreach (string constructor in constructors)
+            //{
+            //    Console.WriteLine(constructor + " " + result[constructor]);
+            //}
+
+
 
             //
             //    string filePath = @"C:\Users\Acer\Downloads\1.json";

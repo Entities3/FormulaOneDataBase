@@ -82,9 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Container\Formula1NinjectModule.cs" />
     <Compile Include="Core\Commands\ICommand.cs" />
-    <Compile Include="Core\Commands\Importer.cs" />
     <Compile Include="Core\Commands\ImportFromJson.cs" />
     <Compile Include="Core\Commands\ReportDataBaseImportActivity.cs" />
     <Compile Include="Core\Commands\ReportToPdf.cs" />
@@ -94,8 +92,6 @@
     <Compile Include="Core\Contracts\IReader.cs" />
     <Compile Include="Core\Contracts\IWriter.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Core\Factories\CommandFactory.cs" />
-    <Compile Include="Core\Factories\ICommandFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
