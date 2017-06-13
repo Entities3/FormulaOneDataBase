@@ -22,11 +22,11 @@
         }
 
         //export to pdf getDriversStandingForSeason 2017
-        // example input command:"report to pdf (path) getalldrivers 2017"
+        // example input command:"report to pdf getalldrivers"
         public void Execute(IList<string> parameters)
         {
-            string filePath = parameters[0];
-            parameters.RemoveAt(0);
+            string filePath = @"..\..\..\Reports";
+        //    parameters.RemoveAt(0);
             string command = parameters[0];
             parameters.RemoveAt(0);
 

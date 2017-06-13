@@ -21,7 +21,7 @@
         public Import(IDesrializer deserializer, IReader reader, IWriter writer, ILogger logger)
         {
             this.deserializer = deserializer;
-            this.reader = reader; 
+            this.reader = reader;
             this.writer = writer;
             this.logger = logger;
             this.db = new Formula1Context();
@@ -30,16 +30,16 @@
         // example input command: "import from json (pathFile) drivers"
         public void Execute(IList<string> parameters)
         {
-
-            string filePath = parameters[0];
+            string targetName = parameters[0];
+            string filePath = $@"..\..\..\JsonFiles\{targetName}.json";
             string json = reader.Read(filePath);
-            parameters.RemoveAt(0);
-            string modelName = string.Join("", parameters);
-            switch (modelName.ToLower())
+            //  parameters.RemoveAt(0);
+         //   string modelName = string.Join("", parameters);
+            switch (targetName.ToLower())
             {
                 case "drivers": this.ImportDrivers(json); break;
                 case "constructors": this.ImportConstructors(json); break;
-            //    case "circuits": this.ImportCircuits(json); break;
+                //    case "circuits": this.ImportCircuits(json); break;
                 case "races": this.ImportRaces(json); break;
                 case "seasons": this.ImportSeasons(json); break;
                 default: throw new ArgumentException("Invalid data to import");
@@ -193,45 +193,45 @@
             return grandPrix;
         }
 
- //       private Circuit GetCircuit(string circuitName)
- //       {
- //           Circuit circuit = db.Circuits.FirstOrDefault(c => c.Name == circuitName);
- //           return circuit;
- //       }
+        //       private Circuit GetCircuit(string circuitName)
+        //       {
+        //           Circuit circuit = db.Circuits.FirstOrDefault(c => c.Name == circuitName);
+        //           return circuit;
+        //       }
 
- //     private void ImportCircuits(string json)
- //     {
- //         // in other method - "json deserializer"
- //         JavaScriptSerializer serializer = new JavaScriptSerializer();
- //         IList<CircuitJson> circuitsJson = serializer.Deserialize<List<CircuitJson>>(json);
- //         IList<string> savedCircuits = db.Circuits.Select(c => c.Name).ToList();
- //         IList<string> savedCountries = db.Countries.Select(c => c.Name).ToList();
- //
- //         int rowToAffectCounter = 0;
- //         int rowAffectedCounter = 0;
- //
- //         foreach (CircuitJson circuitJson in circuitsJson)
- //         {
- //             rowToAffectCounter++;
- //             if (!savedCircuits.Contains(circuitJson.CircuitName))
- //             {
- //                 Country country = GetCountry(circuitJson.Country);
- //                 if (country == null)
- //                 {
- //                     country = ImportCountry(circuitJson.Country);
- //                     savedCountries.Add(circuitJson.Country);
- //                 }
- //                 Circuit circuit = new Circuit() { Name = circuitJson.CircuitName, Country =// country, Locality = circuitJson.Locality, InformationUrl = /circuitJson.Information };
- //                 db.Circuits.Add(circuit);
- //                 savedCircuits.Add(circuitJson.CircuitName);
- //                 rowAffectedCounter++;
- //             }
- //         }
- //
- //         db.SaveChanges();
- //         this.writer.WriteLine($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows //affected!");
- //         this.logger.Info($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows //affected!");
- //     }
+        //     private void ImportCircuits(string json)
+        //     {
+        //         // in other method - "json deserializer"
+        //         JavaScriptSerializer serializer = new JavaScriptSerializer();
+        //         IList<CircuitJson> circuitsJson = serializer.Deserialize<List<CircuitJson>>(json);
+        //         IList<string> savedCircuits = db.Circuits.Select(c => c.Name).ToList();
+        //         IList<string> savedCountries = db.Countries.Select(c => c.Name).ToList();
+        //
+        //         int rowToAffectCounter = 0;
+        //         int rowAffectedCounter = 0;
+        //
+        //         foreach (CircuitJson circuitJson in circuitsJson)
+        //         {
+        //             rowToAffectCounter++;
+        //             if (!savedCircuits.Contains(circuitJson.CircuitName))
+        //             {
+        //                 Country country = GetCountry(circuitJson.Country);
+        //                 if (country == null)
+        //                 {
+        //                     country = ImportCountry(circuitJson.Country);
+        //                     savedCountries.Add(circuitJson.Country);
+        //                 }
+        //                 Circuit circuit = new Circuit() { Name = circuitJson.CircuitName, Country =// country, Locality = circuitJson.Locality, InformationUrl = /circuitJson.Information };
+        //                 db.Circuits.Add(circuit);
+        //                 savedCircuits.Add(circuitJson.CircuitName);
+        //                 rowAffectedCounter++;
+        //             }
+        //         }
+        //
+        //         db.SaveChanges();
+        //         this.writer.WriteLine($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows //affected!");
+        //         this.logger.Info($"Circuits: {rowAffectedCounter}/{rowToAffectCounter} rows //affected!");
+        //     }
 
         private void ImportConstructors(string json)
         {
@@ -248,7 +248,7 @@
                 if (savedConstructors.Contains(constructorJson.ConstructorName))
                 {
                     this.writer.WriteLine($"Import data row already exists! Row {rowToAffectCounter} not affected!");
-                   this.logger.Info($"Import data row already exists! Row {rowToAffectCounter} not affected!");
+                    this.logger.Info($"Import data row already exists! Row {rowToAffectCounter} not affected!");
                 }
                 else if (constructorJson.ConstructorName == null || constructorJson.Nationality == null)
                 {
@@ -273,7 +273,7 @@
 
         private void ImportDrivers(string json)
         {
-            IList<DriverJson> driversJson =  this.deserializer.DeserializeDriver(json);
+            IList<DriverJson> driversJson = this.deserializer.DeserializeDriver(json);
 
             IList<string> savedDrivers = db.Drivers.Select(n => n.Name).ToList();
             IList<string> savedNationalities = db.Nationaties.Select(n => n.Name).ToList();
@@ -292,7 +292,7 @@
                 else if (driverJson.DriverName == null || driverJson.Nationality == null)
                 {
                     this.writer.WriteLine($"Import data row is invalid! Row {rowToAffectCounter} not affected!");
-                   this.logger.Info($"Import data row is invalid! Row {rowToAffectCounter} not affected!");
+                    this.logger.Info($"Import data row is invalid! Row {rowToAffectCounter} not affected!");
                 }
                 else
                 {
@@ -349,20 +349,20 @@
             }
         }
 
-  //     private Country ImportCountry(string countryName)
-  //     {
-  //         Country country = new Country() { Name = countryName };
-  //         db.Countries.Add(country);
-  //         db.SaveChanges();
-  //         this.writer.WriteLine($"Created new country {countryName}!");
-  //         this.logger.Info($"Created new country {countryName}!");
-  //         return country;
-  //     }
+        //     private Country ImportCountry(string countryName)
+        //     {
+        //         Country country = new Country() { Name = countryName };
+        //         db.Countries.Add(country);
+        //         db.SaveChanges();
+        //         this.writer.WriteLine($"Created new country {countryName}!");
+        //         this.logger.Info($"Created new country {countryName}!");
+        //         return country;
+        //     }
 
-  //      private Country GetCountry(string countryName)
-  //      {
-  //          Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
-  //          return country;
-  //      }
+        //      private Country GetCountry(string countryName)
+        //      {
+        //          Country country = db.Countries.FirstOrDefault(c => c.Name == countryName);
+        //          return country;
+        //      }
     }
 }

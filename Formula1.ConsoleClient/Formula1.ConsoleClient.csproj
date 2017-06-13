@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container\Formula1NinjectModule.cs" />
+    <Compile Include="Core\Commands\Delete.cs" />
     <Compile Include="Core\Commands\ICommand.cs" />
     <Compile Include="Core\Commands\Import.cs" />
     <Compile Include="Core\Commands\Export.cs" />
