@@ -23,6 +23,7 @@
 
             this.Bind<ICommand>().To<Import>().Named("import").WithConstructorArgument("reader", Kernel.Get<IReader>("FileReader"));
             this.Bind<ICommand>().To<Export>().Named("export");
+			      this.Bind<ICommand>().To<Delete>().Named("delete");
 
             this.Bind<ISerializer>().To<PdfSerializer>().InSingletonScope();
             this.Bind<IDesrializer>().To<JsonDeserializer>().InSingletonScope();
